@@ -1,14 +1,14 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return render_template('index.html')
+CORS(app)
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
-    data = request.json  # Assuming data is sent as JSON
-    # Perform your calculation here using data['input']
-    result = data['x'] + data['y']  # Example: Multiply the input by 2
+    data = request.json
+    result = data['x'] + data['y']
     return jsonify({'sum': result})
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=9999)

@@ -1,7 +1,7 @@
 function sumIt() {
   var x=Number(document.getElementById("x").value);
   var y=Number(document.getElementById("y").value);
-  fetch('/calculate', {
+  fetch('http://127.0.0.1:9999/calculate', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
